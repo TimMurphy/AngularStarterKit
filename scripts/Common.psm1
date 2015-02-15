@@ -1,4 +1,4 @@
-﻿function Confirm(
+function Confirm(
     [parameter(Mandatory = $true)]
     [ValidateNotNullOrEmpty()]
     [string] $title,
@@ -53,6 +53,38 @@ function Execute(
         }
     }
     while ($true)
+}
+
+function Join-PathEnvironment(
+    [parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string] $addToPath)
+{
+    $newPath = $env:Path
+    
+    if (-not $newPath.EndsWith(";"))
+    {
+        $newPath += ";"
+    }
+    
+    if ($newPath.Contains($addToPath + ";"))
+    {
+        return $newPath
+    }
+    
+    return $newPath + $addToPath + ";"
+}
+
+function Set-MachineEnvironmentVariable(
+    [parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string] $variable,
+
+    [parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string] $value)
+{
+    [Environment]::SetEnvironmentVariable($variable, $value, [System.EnvironmentVariableTarget]::Machine)
 }
 
 function Test-Admin {

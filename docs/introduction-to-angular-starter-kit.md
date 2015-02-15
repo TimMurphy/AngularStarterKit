@@ -36,6 +36,6 @@ If you just want to start a new project without the Angular Starter Kit commit h
 
 The ``depth=1`` option tells git to only pull down one commit worth of historical data.
 
-All remaining dependencies by running:
+All remaining dependencies can be installed by running:
 
 	InstallDependencies.cmd
