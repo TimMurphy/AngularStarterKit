@@ -29,7 +29,7 @@ function Install-ChocolateyPackages()
 
 function Install-NodePackages()
 {
-    Execute { &npm install gulp --global }
+    Execute { &npm install --global gulp jscs jshint }
 }
 
 function Add-NodeToolsToMachinePath()
